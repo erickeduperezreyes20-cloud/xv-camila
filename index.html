@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XV Años de Camila Pérez</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap');
+        
+        body {
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(180deg, #fdf6ff, #f9f3fb);
+            color: #333;
+        }
+        header {
+            background: url('https://i.ibb.co/kDrSGLh/butterfly-bg.png') center/cover no-repeat, linear-gradient(135deg, #b388ebcc, #e1bee7cc);
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+            position: relative;
+        }
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            font-family: 'Great Vibes', cursive;
+        }
+        header p {
+            font-size: 1.3em;
+        }
+        section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        h2 {
+            color: #7b1fa2;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+        }
+        .countdown {
+            font-size: 1.7em;
+            margin: 20px 0;
+            color: #6a1b9a;
+            font-weight: bold;
+        }
+        .map iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+        .gallery {
+            background: #f3e5f5;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 700px;
+            font-style: italic;
+        }
+        .rsvp {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+            display: inline-block;
+            padding: 30px;
+        }
+        .rsvp input, .rsvp button {
+            padding: 12px;
+            margin: 8px;
+            font-size: 1em;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            width: 80%;
+        }
+        .rsvp button {
+            background: #ba68c8;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .rsvp button:hover {
+            background: #8e24aa;
+        }
+        footer {
+            background: #7b1fa2;
+            text-align: center;
+            color: white;
+            padding: 25px;
+            font-size: 1.1em;
+            font-family: 'Great Vibes', cursive;
+        }
+        /* Animación de mariposas */
+        .butterfly {
+            position: absolute;
+            width: 60px;
+            opacity: 0.7;
+            animation: float 12s infinite;
+        }
+        .butterfly:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .butterfly:nth-child(2) { top: 50%; left: 80%; animation-delay: 3s; }
+        .butterfly:nth-child(3) { top: 70%; left: 30%; animation-delay: 6s; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(20deg); }
+            100% { transform: translateY(0) rotate(-20deg); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>XV Años de Camila Pérez</h1>
+    <p>¡Acompáñanos a celebrar este día tan especial!</p>
+    <img src="https://i.ibb.co/6rz9cw0/butterfly-purple.png" class="butterfly">
+    <img src="https://i.ibb.co/6rz9cw0/butterfly-purple.png" class="butterfly">
+    <img src="https://i.ibb.co/6rz9cw0/butterfly-purple.png" class="butterfly">
+</header>
+
+<section>
+    <h2>Fecha del evento</h2>
+    <p><strong>6 de diciembre</strong></p>
+    <div class="countdown" id="countdown"></div>
+</section>
+
+<section class="map">
+    <h2>Ubicación</h2>
+    <iframe src="https://maps.google.com/maps?q=31.6904,-106.4245&z=15&output=embed"></iframe>
+    <p><a href="https://maps.app.goo.gl/kmNVb8wfwJ7EFqdA6?g_st=ipc" target="_blank">Abrir en Google Maps</a></p>
+</section>
+
+<section class="gallery">
+    <h2>Galería</h2>
+    <p>Muy pronto añadiremos las fotos de la sesión 📸</p>
+</section>
+
+<section>
+    <h2>Confirma tu asistencia</h2>
+    <div class="rsvp">
+        <form>
+            <input type="text" placeholder="Tu nombre" required><br>
+            <input type="number" placeholder="Número de acompañantes" min="0"><br>
+            <button type="submit">Confirmar</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>Con mucho cariño, la familia Pérez 💜🦋</p>
+</footer>
+
+<script>
+// Cuenta regresiva al 6 de diciembre
+var eventDate = new Date("December 6, 2025 00:00:00").getTime();
+
+var countdownFunction = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = eventDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+
+    if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdown").innerHTML = "¡El gran día ha llegado!";
+    }
+}, 1000);
+</script>
+
+</body>
+</html>
